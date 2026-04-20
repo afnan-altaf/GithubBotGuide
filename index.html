@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>JT GitHub Bot — Free Setup Guide</title>
+<link rel="stylesheet" href="style.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<!-- ══════════ THREE.JS CANVAS ══════════ -->
+<canvas id="bg"></canvas>
+
+<!-- ══════════ PROGRESS BAR ══════════ -->
+<div id="progress-bar"><div id="progress-fill"></div></div>
+
+<!-- ══════════ SIDEBAR ══════════ -->
+<nav id="sidebar">
+  <div id="sb-logo">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+  </div>
+  <div id="sb-title">Setup Guide</div>
+  <ul id="sb-steps">
+    <li class="sb-item active" data-step="0" onclick="scrollToStep(0)"><span class="sb-num">01</span><span class="sb-lbl">Intro</span></li>
+    <li class="sb-item" data-step="1" onclick="scrollToStep(1)"><span class="sb-num">02</span><span class="sb-lbl">BotFather</span></li>
+    <li class="sb-item" data-step="2" onclick="scrollToStep(2)"><span class="sb-num">03</span><span class="sb-lbl">Telegram API</span></li>
+    <li class="sb-item" data-step="3" onclick="scrollToStep(3)"><span class="sb-num">04</span><span class="sb-lbl">MongoDB</span></li>
+    <li class="sb-item" data-step="4" onclick="scrollToStep(4)"><span class="sb-num">05</span><span class="sb-lbl">GitHub OAuth</span></li>
+    <li class="sb-item" data-step="5" onclick="scrollToStep(5)"><span class="sb-num">06</span><span class="sb-lbl">Railway</span></li>
+    <li class="sb-item" data-step="6" onclick="scrollToStep(6)"><span class="sb-num">07</span><span class="sb-lbl">Variables</span></li>
+    <li class="sb-item" data-step="7" onclick="scrollToStep(7)"><span class="sb-num">08</span><span class="sb-lbl">Test Bot</span></li>
+    <li class="sb-item" data-step="8" onclick="scrollToStep(8)"><span class="sb-num">09</span><span class="sb-lbl">Webhooks</span></li>
+    <li class="sb-item" data-step="9" onclick="scrollToStep(9)"><span class="sb-num">10</span><span class="sb-lbl">Errors</span></li>
+  </ul>
+  <div id="sb-copy">© 2025 JT</div>
+</nav>
+
+<!-- ══════════ MAIN CONTENT ══════════ -->
+<main id="main">
+
+  <!-- HERO -->
+  <section class="section hero-section" id="step-0">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🚀 Free Setup Guide</div>
+      <h1 class="hero-title">
+        <span class="gradient-text">JT GitHub</span><br/>
+        <span class="white-text">Notify Bot</span>
+      </h1>
+      <p class="hero-sub">Roman Urdu mein — Step by Step 3D Guide<br/>
+      GitHub notifications ko Telegram par pao — bilkul <strong>FREE</strong></p>
+      <div class="hero-stats">
+        <div class="stat-pill">⚡ 10 Steps</div>
+        <div class="stat-pill">🆓 100% Free</div>
+        <div class="stat-pill">⏱ 15 min</div>
+        <div class="stat-pill">🔒 Secure</div>
+      </div>
+      <button class="btn-start" onclick="scrollToStep(1)">
+        <span>Start Karo</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <div class="scroll-hint">
+        <div class="scroll-dot"></div>
+        <span>Scroll karo ya sidebar se step choose karo</span>
+      </div>
+    </div>
+    <div class="hero-3d">
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+      <div class="floating-card fc1">
+        <span class="fc-icon">🤖</span>
+        <span class="fc-label">Telegram Bot</span>
+      </div>
+      <div class="floating-card fc2">
+        <span class="fc-icon">🐙</span>
+        <span class="fc-label">GitHub API</span>
+      </div>
+      <div class="floating-card fc3">
+        <span class="fc-icon">🍃</span>
+        <span class="fc-label">MongoDB</span>
+      </div>
+      <div class="floating-card fc4">
+        <span class="fc-icon">🚂</span>
+        <span class="fc-label">Railway</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 1: BOTFATHER -->
+  <section class="section step-section" id="step-1">
+    <div class="step-number-bg">01</div>
+    <div class="step-inner reveal">
+      <div class="step-badge" style="background:linear-gradient(135deg,#2563eb,#7c3aed)">Step 1</div>
+      <h2 class="step-title">Telegram Bot Banana</h2>
+      <p class="step-subtitle">BotFather se apna bot create karo</p>
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="ic-icon">💬</div>
+          <h3>BotFather kya hai?</h3>
+          <p>BotFather Telegram ka official bot hai jo naye bots banata hai. Iske bina koi Telegram bot nahi ban sakta.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-icon">🎯</div>
+          <h3>Hume kya milega?</h3>
+          <p>Ek <strong>BOT_TOKEN</strong> milega — ye aapke bot ka password hai. Ise kisi ke saath share mat karna.</p>
+        </div>
+      </div>
+      <div class="steps-list">
+        <div class="sl-item"><div class="sl-num">1</div><div class="sl-text">Telegram kholo aur <code>@BotFather</code> search karo</div></div>
+        <div class="sl-item"><div class="sl-num">2</div><div class="sl-text"><code>/newbot</code> command bhejo</div></div>
+        <div class="sl-item"><div class="sl-num">3</div><div class="sl-text">Bot ka naam likho — e.g. <strong>"JT GitHub Notify Bot"</strong></div></div>
+        <div class="sl-item"><div class="sl-num">4</div><div class="sl-text">Username likho — e.g. <strong>JTGithubNotifyBot</strong> (end mein "bot" hona chahiye)</div></div>
+        <div class="sl-item"><div class="sl-num">5</div><div class="sl-text">Token copy karo aur safe jagah rakh lo!</div></div>
+      </div>
+      <div class="code-box">
+        <div class="cb-header"><span class="cb-dots"><i></i><i></i><i></i></span><span class="cb-title">Token Format</span><button class="cb-copy" onclick="copyCode(this)">Copy</button></div>
+        <pre><code>7123456789:AAHdqTcvCH1vGWJxfSeofSs0K5PALDsaw
+<span class="c-gray"># Yeh sirf example hai — aapka apna hoga</span></code></pre>
+      </div>
+      <div class="warning-box">⚠️ <strong>BOT_TOKEN kisi ke saath share mat karo</strong> — ye aapke bot ka master password hai!</div>
+      <div class="link-btn-row">
+        <a href="https://t.me/BotFather" target="_blank" class="ext-link">
+          <span>🔗</span> t.me/BotFather kholna
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2: TELEGRAM API -->
+  <section class="section step-section" id="step-2">
+    <div class="step-number-bg">02</div>
+    <div class="step-inner reveal">
+      <div class="step-badge" style="background:linear-gradient(135deg,#0891b2,#2563eb)">Step 2</div>
+      <h2 class="step-title">Telegram API Credentials</h2>
+      <p class="step-subtitle">API_ID aur API_HASH lena — bilkul free</p>
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="ic-icon">🔑</div>
+          <h3>Kyun chahiye?</h3>
+          <p>Bot Telethon library use karta hai jo Telegram ke MTProto protocol se baat karta hai. Iske liye API credentials zaroori hain.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-icon">✅</div>
+          <h3>Kya milega?</h3>
+          <p><strong>API_ID</strong> (number) aur <strong>API_HASH</strong> (string) — dono bilkul free hain.</p>
+        </div>
+      </div>
+      <div class="steps-list">
+        <div class="sl-item"><div class="sl-num">1</div><div class="sl-text">Browser mein jao: <code>my.telegram.org</code></div></div>
+        <div class="sl-item"><div class="sl-num">2</div><div class="sl-text">Apne Telegram phone number se login karo</div></div>
+        <div class="sl-item"><div class="sl-num">3</div><div class="sl-text"><strong>"API Development Tools"</strong> par click karo</div></div>
+        <div class="sl-item"><div class="sl-num">4</div><div class="sl-text">Form bharo: App title = "JT Bot", Short name = "jtbot"</div></div>
+        <div class="sl-item"><div class="sl-num">5</div><div class="sl-text"><strong>"Create Application"</strong> click karo</div></div>
+        <div class="sl-item"><div class="sl-num">6</div><div class="sl-text">API_ID aur API_HASH copy karo</div></div>
+      </div>
+      <div class="code-box">
+        <div class="cb-header"><span class="cb-dots"><i></i><i></i><i></i></span><span class="cb-title">Credentials Example</span><button class="cb-copy" onclick="copyCode(this)">Copy</button></div>
+        <pre><code>API_ID=<span class="c-yellow">12345678</span>        <span class="c-gray"># Sirf numbers</span>
+API_HASH=<span class="c-green">abcdef1234567890abcdef1234567890</span>  <span class="c-gray"># Long string</span></code></pre>
+      </div>
+      <div class="tip-box">💡 <strong>Tip:</strong> API_ID sirf numbers ka hoga, API_HASH letters+numbers ka mix.</div>
+      <div class="link-btn-row">
+        <a href="https://my.telegram.org" target="_blank" class="ext-link"><span>🔗</span> my.telegram.org</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 3: MONGODB -->
+  <section class="section step-section" id="step-3">
+    <div class="step-number-bg">03</div>
+    <div class="step-inner reveal">
+      <div class="step-badge" style="background:linear-gradient(135deg,#166534,#15803d)">Step 3</div>
+      <h2 class="step-title">MongoDB Atlas Database</h2>
+      <p class="step-subtitle">Free database banana — koi credit card nahi chahiye</p>
+      <div class="info-card full-card">
+        <div class="ic-icon">🍃</div>
+        <h3>MongoDB Atlas kya hai?</h3>
+        <p>Ye ek free cloud database hai. Bot users, tokens, aur repo data yahan store karta hai. M0 tier (free) kaafi hai is bot ke liye.</p>
+      </div>
+      <div class="steps-list">
+        <div class="sl-item"><div class="sl-num">1</div><div class="sl-text"><code>mongodb.com/atlas</code> par jao aur free account banao</div></div>
+        <div class="sl-item"><div class="sl-num">2</div><div class="sl-text"><strong>"Build a Database"</strong> click karo</div></div>
+        <div class="sl-item"><div class="sl-num">3</div><div class="sl-text"><strong>"Free" (M0)</strong> tier choose karo — AWS ya Google Cloud</div></div>
+        <div class="sl-item"><div class="sl-num">4</div><div class="sl-text">Username aur password set karo — <strong>yaad rakh lena!</strong></div></div>
+        <div class="sl-item"><div class="sl-num">5</div><div class="sl-text">Network Access mein: <strong>"Allow Access from Anywhere"</strong> (0.0.0.0/0) add karo</div></div>
+        <div class="sl-item"><div class="sl-num">6</div><div class="sl-text">Database > Connect > <strong>"Connect your application"</strong> > Connection string copy karo</div></div>
+      </div>
+      <div class="code-box">
+        <div class="cb-header"><span class="cb-dots"><i></i><i></i><i></i></span><span class="cb-title">MONGO_URI Format</span><button class="cb-copy" onclick="copyCode(this)">Copy</button></div>
+        <pre><code>mongodb+srv://<span class="c-yellow">username</span>:<span class="c-green">password</span>@cluster0.xxxxx.mongodb.net/<span class="c-cyan">jtbot</span>?retryWrites=true&w=majority
+<span class="c-gray"># username aur password apne set kiye hue daalo</span>
+<span class="c-gray"># 'jtbot' database ka naam hai — kuch bhi rakh sakte ho</span></code></pre>
+      </div>
+      <div class="warning-box">⚠️ <strong>Network Access mein 0.0.0.0/0 add karna mat bhoolna!</strong> Warna hosting se connection nahi hogi.</div>
+      <div class="link-btn-row">
+        <a href="https://mongodb.com/atlas/database" target="_blank" class="ext-link"><span>🔗</span> MongoDB Atlas (Free)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 4: GITHUB OAUTH -->
+  <section class="section step-section" id="step-4">
+    <div class="step-number-bg">04</div>
+    <div class="step-inner reveal">
+      <div class="step-badge" style="background:linear-gradient(135deg,#374151,#1f2937)">Step 4</div>
+      <h2 class="step-title">GitHub OAuth App</h2>
+      <p class="step-subtitle">GitHub se login ke liye OAuth App banana</p>
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="ic-icon">🔐</div>
+          <h3>OAuth kya karta hai?</h3>
+          <p>Jab users /connect karte hain, GitHub se securely login hote hain. CLIENT_ID aur CLIENT_SECRET iske liye chahiye.</p>
+        </div>
+        <div class="info-card">
+          <div class="ic-icon">🔄</div>
+          <h3>Callback URL?</h3>
+          <p>Ye woh URL hai jahan GitHub login ke baad user wapas aata hai. Hosting deploy karne ke baad update karna hoga.</p>
+        </div>
+      </div>
+      <div class="steps-list">
+        <div class="sl-item"><div class="sl-num">1</div><div class="sl-text">GitHub > Settings > <strong>Developer Settings</strong> par jao</div></div>
+        <div class="sl-item"><div class="sl-num">2</div><div class="sl-text"><strong>OAuth Apps > New OAuth App</strong> click karo</div></div>
+        <div class="sl-item"><div class="sl-num">3</div><div class="sl-text">Application name: <strong>"JT GitHub Bot"</strong></div></div>
+        <div class="sl-item"><div class="sl-num">4</div><div class="sl-text">Homepage URL: <code>https://your-app.railway.app</code></div></div>
+        <div class="sl-item"><div class="sl-num">5</div><div class="sl-text">Callback URL: <code>https://your-app.railway.app/oauth/callback</code></div></div>
+        <div class="sl-item"><div class="sl-num">6</div><div class="sl-text"><strong>"Register application"</strong> click karo</div></div>
+        <div class="sl-item"><div class="sl-num">7</div><div class="sl-text">CLIENT_ID copy karo, phir <strong>"Generate a new client secret"</strong> click karo</div></div>
+      </div>
+      <div class="code-box">
+        <div class="cb-header"><span class="cb-dots"><i></i><i></i><i></i></span><span class="cb-title">GitHub OAuth Credentials</span><button class="cb-copy" onclick="copyCode(this)">Copy</button></div>
+        <pre><code>GITHUB_CLIENT_ID=<span class="c-cyan">Ov23liXXXXXXXXXX</span>
+GITHUB_CLIENT_SECRET=<span class="c-green">abcdef1234567890abcdef1234567890XXXXXXXX</span></code></pre>
+      </div>
+      <div class="tip-box">💡 <strong>Tip:</strong> Hosting URL deploy ke baad milegi — pehle placeholder daalo, baad mein update karo.</div>
+      <div class="link-btn-row">
+        <a href="https://github.com/settings/developers" target="_blank" class="ext-link"><span>🔗</span> GitHub Developer Settings</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 5: RAILWAY DEPLOY -->
+  <section class="section step-section" id="step-5">
+    <div class="step-number-bg">05</div>
+    <div class="step-inner reveal">
+      <div class="step-badge" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">Step 5</div>
+      <h2 class="step-title">Railway Par Deploy Karo</h2>
+      <p class="step-subtitle">Sab se aasaan aur recommended free hosting</p>
+      <div class="platform-cards">
+        <div class="platform-card recommended">
+          <div class="pc-badge">⭐ Recommended</div>
+          <div class="pc-icon">🚂</div>
+          <h3>Railway</h3>
+          <p>Sab se aasaan, Dockerfile auto-detect, $5 free credit/month</p>
+          <a href="https://railway.app" target="_blank" class="pc-btn">railway.app</a>
+        </div>
+        <div class="platform-card">
+          <div class="pc-icon">🎨</div>
+          <h3>Render</h3>
+          <p>Free tier, thoda slow (sleep mode), Docker support</p>
+          <a href="https://render.com" target="_blank" class="pc-btn">render.com</a>
+        </div>
+        <div class="platform-card">
+          <div class="pc-icon">🌐</div>
+          <h3>Koyeb</h3>
+          <p>Always-on free tier, nano instance, Docker support</p>
+          <a href="https://koyeb.com" target="_blank" class="pc-btn">koyeb.com</a>
+        </div>
+      </div>
+      <h3 class="sub-h">Railway Steps:</h3>
+      <div class="steps-list">
+        <div class="sl-item"><div class="sl-num">1</div><div class="sl-text"><code>railway.app</code> par jao aur GitHub se <strong>free sign up</strong> karo</div></div>
+        <div class="sl-item"><div class="sl-num">2</div><div class="sl-text"><strong>"New Project"</strong> click karo</div></div>
+        <div class="sl-item"><div class="sl-num">3</div><div class="sl-text"><strong>"Deploy from GitHub repo"</strong> choose karo</div></div>
+        <div class="sl-item"><div class="sl-num">4</div><div class="sl-text"><strong>JT-Github-TGbot</strong> repo select karo</div></div>
+        <div class="sl-item"><div class="sl-num">5</div><div class="sl-text">Railway automatically Dockerfile detect karega</div></div>
+        <div class="sl-item"><div class="sl-num">6</div><div class="sl-text"><strong>"Variables"</strong> tab mein jao — next step mein variables daalo</div></div>
+        <div class="sl-item"><div class="sl-num">7</div><div class="sl-text">Deploy ke baad <strong>"Public Domain"</strong> generate karo aur copy karo</div></div>
+        <div class="sl-item"><div class="sl-text"><strong>Is URL ko GitHub OAuth App mein update karo!</strong></div></div>
+      </div>
+      <div class="tip-box">💡 <strong>Tip:</strong> UptimeRobot (free) se apni app ko har 5 min ping karo taake woh jaag rahi rahe!</div>
+    </div>
+  </section>
+
+  <!-- STEP 6: ENV VARIABLES -->
+  <section class="section step-section" id="step-6">
+    <div class="step-number-bg">06</div>
+    <div class="step-inner reveal">
+      <div class="step-badge" style="background:linear-gradient(135deg,#b45309,#d97706)">Step 6</div>
+      <h2 class="step-title">Environment Variables</h2>
+      <p class="step-subtitle">Saari values Railway "Variables" mein daalo</p>
+      <div class="env-table">
+        <div class="et-header">
+          <span>Variable</span><span>Value / Kahan Se Milega</span><span>Zarori?</span>
+        </div>
+        <div class="et-row">
+          <span class="et-key">API_ID</span>
+          <span class="et-val">my.telegram.org se milta hai (number)</span>
+          <span class="et-req yes">✅ Haan</span>
+        </div>
+        <div class="et-row">
+          <span class="et-key">API_HASH</span>
+          <span class="et-val">my.telegram.org se milta hai (string)</span>
+          <span class="et-req yes">✅ Haan</span>
+        </div>
+        <div class="et-row">
+          <span class="et-key">BOT_TOKEN</span>
+          <span class="et-val">@BotFather se mila token</span>
+          <span class="et-req yes">✅ Haan</span>
+        </div>
+        <div class="et-row">
+          <span class="et-key">MONGO_URI</span>
+          <span class="et-val">MongoDB Atlas connection string</span>
+          <span class="et-req yes">✅ Haan</span>
+        </div>
+        <div class="et-row">
+          <span class="et-key">GITHUB_CLIENT_ID</span>
+          <span class="et-val">GitHub OAuth App se</span>
+          <span class="et-req yes">✅ Haan</span>
+        </div>
+        <div class="et-row">
+          <span class="et-key">GITHUB_CLIENT_SECRET</span>
+          <span class="et-val">GitHub OAuth App se</span>
+          <span class="et-req yes">✅ Haan</span>
+        </div>
+        <div class="et-row">
+          <span class="et-key">BASE_URL</span>
+          <span class="et-val">https://your-app.railway.app (Railway URL)</span>
+          <span class="et-req yes">✅ Haan</span>
+        </div>
+        <div class="et-row">
+          <span class="et-key">SESSION_SECRET</span>
+          <span class="et-val">Koi bhi random lamba string</span>
+          <span class="et-req yes">✅ Haan</span>
+        </div>
+        <div class="et-row">
+          <span class="et-key">OWNER_ID</span>
+          <span class="et-val">Aapka Telegram ID (@userinfobot se)</span>
+          <span class="et-req yes">✅ Haan</span>
+        </div>
+        <div class="et-row">
+          <span class="et-key">LOG_CHANNEL</span>
+          <span class="et-val">Telegram channel ID -100XXXXXX</span>
+          <span class="et-req no">🔵 Optional</span>
+        </div>
+      </div>
+      <div class="code-box">
+        <div class="cb-header"><span class="cb-dots"><i></i><i></i><i></i></span><span class="cb-title">Complete .env Example</span><button class="cb-copy" onclick="copyCode(this)">Copy</button></div>
+        <pre><code>API_ID=<span class="c-yellow">12345678</span>
+API_HASH=<span class="c-green">abcdef1234567890abcdef1234</span>
+BOT_TOKEN=<span class="c-cyan">7123456789:AAHdqTcvCH1vGWJx...</span>
+MONGO_URI=<span class="c-green">mongodb+srv://user:pass@cluster.xxxxx.mongodb.net/jtbot</span>
+GITHUB_CLIENT_ID=<span class="c-cyan">Ov23liXXXXXXXX</span>
+GITHUB_CLIENT_SECRET=<span class="c-green">abcdef12345678XXXXXXXX</span>
+BASE_URL=<span class="c-yellow">https://your-app.railway.app</span>
+SESSION_SECRET=<span class="c-cyan">super_random_long_secret_string_here</span>
+OWNER_ID=<span class="c-yellow">123456789</span></code></pre>
+      </div>
+      <div class="tip-box">💡 <strong>Apna Telegram ID kaise pata kare:</strong> @userinfobot ko /start bhejo — woh ID bata dega!</div>
+    </div>
+  </section>
+
+  <!-- STEP 7: TEST -->
+  <section class="section step-section" id="step-7">
+    <div class="step-number-bg">07</div>
+    <div class="step-inner reveal">
+      <div class="step-badge" style="background:linear-gradient(135deg,#0891b2,#06b6d4)">Step 7</div>
+      <h2 class="step-title">Bot Test Karo</h2>
+      <p class="step-subtitle">Deploy hone ke baad ye commands test karo</p>
+      <div class="commands-grid">
+        <div class="cmd-card">
+          <div class="cmd-icon">🚀</div>
+          <code>/start</code>
+          <p>Welcome message aana chahiye</p>
+        </div>
+        <div class="cmd-card">
+          <div class="cmd-icon">📋</div>
+          <code>/help</code>
+          <p>Commands ki list dekhna</p>
+        </div>
+        <div class="cmd-card">
+          <div class="cmd-icon">🔗</div>
+          <code>/connect</code>
+          <p>GitHub se login karna (OAuth)</p>
+        </div>
+        <div class="cmd-card">
+          <div class="cmd-icon">📁</div>
+          <code>/repos</code>
+          <p>Aapke sab repos list karo</p>
+        </div>
+        <div class="cmd-card">
+          <div class="cmd-icon">➕</div>
+          <code>/addwebhook</code>
+          <p>Repo ka webhook add karo</p>
+        </div>
+        <div class="cmd-card">
+          <div class="cmd-icon">📊</div>
+          <code>/stats</code>
+          <p>Bot ki stats dekhna</p>
+        </div>
+      </div>
+      <div class="steps-list">
+        <div class="sl-item"><div class="sl-num">1</div><div class="sl-text">Telegram mein apna bot open karo</div></div>
+        <div class="sl-item"><div class="sl-num">2</div><div class="sl-text"><code>/start</code> bhejo — welcome message aana chahiye</div></div>
+        <div class="sl-item"><div class="sl-num">3</div><div class="sl-text"><code>/connect</code> bhejo — GitHub OAuth window khulegi</div></div>
+        <div class="sl-item"><div class="sl-num">4</div><div class="sl-text">GitHub se allow karo — phir <code>/repos</code> bhejo</div></div>
+        <div class="sl-item"><div class="sl-num">5</div><div class="sl-text">Kisi repo par <code>/addwebhook</code> karo</div></div>
+        <div class="sl-item"><div class="sl-num">6</div><div class="sl-text">GitHub par us repo mein issue kholke test karo!</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 8: WEBHOOKS -->
+  <section class="section step-section" id="step-8">
+    <div class="step-number-bg">08</div>
+    <div class="step-inner reveal">
+      <div class="step-badge" style="background:linear-gradient(135deg,#b45309,#92400e)">Step 8</div>
+      <h2 class="step-title">Webhook Setup</h2>
+      <p class="step-subtitle">GitHub se real-time notifications ke liye</p>
+      <div class="info-card full-card">
+        <div class="ic-icon">🔔</div>
+        <h3>Webhook kya karta hai?</h3>
+        <p>Jab bhi aapke GitHub repo mein kuch hota hai (push, PR, issue, release), GitHub aapki bot ke server ko ping karta hai — aur bot Telegram par notification bhejta hai.</p>
+      </div>
+      <div class="two-methods">
+        <div class="method-card auto">
+          <h3>🤖 Automatic (Recommended)</h3>
+          <p>Bot <code>/addwebhook</code> command se automatically webhook set karta hai. Koi extra kaam nahi!</p>
+          <div class="method-steps">
+            <div class="sl-item"><div class="sl-num">1</div><div class="sl-text"><code>/repos</code> bhejo</div></div>
+            <div class="sl-item"><div class="sl-num">2</div><div class="sl-text">Repo select karo</div></div>
+            <div class="sl-item"><div class="sl-num">3</div><div class="sl-text"><code>/addwebhook</code> press karo</div></div>
+            <div class="sl-item"><div class="sl-num">4</div><div class="sl-text">Done! ✅</div></div>
+          </div>
+        </div>
+        <div class="method-card manual">
+          <h3>🔧 Manual (Agar bot se na ho)</h3>
+          <div class="method-steps">
+            <div class="sl-item"><div class="sl-num">1</div><div class="sl-text">GitHub > Repo > Settings > Webhooks</div></div>
+            <div class="sl-item"><div class="sl-num">2</div><div class="sl-text">"Add webhook" click karo</div></div>
+            <div class="sl-item"><div class="sl-num">3</div><div class="sl-text">URL: <code>https://your-app.railway.app/webhook</code></div></div>
+            <div class="sl-item"><div class="sl-num">4</div><div class="sl-text">Content type: <code>application/json</code></div></div>
+            <div class="sl-item"><div class="sl-num">5</div><div class="sl-text">"Send me everything" choose karo</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 9: ERRORS -->
+  <section class="section step-section" id="step-9">
+    <div class="step-number-bg">09</div>
+    <div class="step-inner reveal">
+      <div class="step-badge" style="background:linear-gradient(135deg,#991b1b,#dc2626)">Step 9</div>
+      <h2 class="step-title">Common Errors &amp; Fixes</h2>
+      <p class="step-subtitle">Koi masla? Yahan solution dhundo</p>
+      <div class="errors-accordion">
+        <div class="err-item" onclick="toggleErr(this)">
+          <div class="err-q">❓ Bot respond nahi kar raha</div>
+          <div class="err-a">
+            <ul>
+              <li>BOT_TOKEN sahi check karo — copy paste mein galti to nahi?</li>
+              <li>Railway/Render logs mein koi error dekho</li>
+              <li>Koi variable missing to nahi? Sab ZARORI variables daale hain?</li>
+              <li>Deployment successful hua? Deployment status green hai?</li>
+            </ul>
+          </div>
+        </div>
+        <div class="err-item" onclick="toggleErr(this)">
+          <div class="err-q">❓ Database connection fail ho raha hai</div>
+          <div class="err-a">
+            <ul>
+              <li>MONGO_URI mein username:password sahi hai?</li>
+              <li>Network Access mein 0.0.0.0/0 add hai MongoDB Atlas par?</li>
+              <li>URI format sahi hai? (mongodb+srv://... se start hona chahiye)</li>
+              <li>Database name URI mein hai? (last slash ke baad likho)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="err-item" onclick="toggleErr(this)">
+          <div class="err-q">❓ GitHub OAuth kaam nahi kar raha</div>
+          <div class="err-a">
+            <ul>
+              <li>BASE_URL mein https:// lagaya aur end mein / nahi?</li>
+              <li>GitHub OAuth App ki Callback URL exactly match karti hai BASE_URL + /oauth/callback?</li>
+              <li>CLIENT_ID aur CLIENT_SECRET sahi copy kiye?</li>
+              <li>OAuth App ko "active" status mein check karo</li>
+            </ul>
+          </div>
+        </div>
+        <div class="err-item" onclick="toggleErr(this)">
+          <div class="err-q">❓ Render par app slow / timeout</div>
+          <div class="err-a">
+            <ul>
+              <li>Render free tier mein app 15 min baad sleep ho jati hai</li>
+              <li>UptimeRobot.com (free) se har 5 min ping karo</li>
+              <li>Railway ya Koyeb try karo — better performance hai</li>
+            </ul>
+          </div>
+        </div>
+        <div class="err-item" onclick="toggleErr(this)">
+          <div class="err-q">❓ Webhook notifications nahi aa rahe</div>
+          <div class="err-a">
+            <ul>
+              <li>BASE_URL sahi hai? Hosting live aur accessible hai?</li>
+              <li>GitHub repo mein webhook add hua? Settings > Webhooks check karo</li>
+              <li>Webhook recent deliveries mein error to nahi?</li>
+              <li>/addwebhook dobara chalao</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="tip-box">💡 <strong>Pro Tip:</strong> Hamesha hosting platform ke "Logs" section mein dekho — wahan exact error milti hai jo problem solve karna aasaan banati hai!</div>
+    </div>
+  </section>
+
+  <!-- FINAL: DONE -->
+  <section class="section final-section" id="step-final">
+    <div class="final-inner reveal">
+      <div class="final-glow"></div>
+      <div class="final-icon">🎉</div>
+      <h2 class="final-title">Mubarak Ho!</h2>
+      <p class="final-sub">Aapka JT GitHub Notify Bot tayyar hai.<br/>Ab aap GitHub notifications seedha Telegram par paoge.</p>
+      <div class="final-links">
+        <a href="https://github.com/afnan-altaf/JT-Github-TGbot" target="_blank" class="fl-btn primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repo Dekho
+        </a>
+        <a href="https://t.me/BotFather" target="_blank" class="fl-btn secondary">🤖 BotFather</a>
+        <a href="https://railway.app" target="_blank" class="fl-btn secondary">🚂 Railway</a>
+        <a href="https://mongodb.com/atlas" target="_blank" class="fl-btn secondary">🍃 MongoDB</a>
+      </div>
+      <div class="final-footer">Copyright © 2025 JT. All rights reserved. &nbsp;|&nbsp; JT-Github-TGbot</div>
+    </div>
+  </section>
+
+</main>
+
+<script src="main.js"></script>
+</body>
+</html>
